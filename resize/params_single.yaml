@@ -1,0 +1,11 @@
+base:
+  log_level: INFO
+  random_state: 67
+data:
+  data_dir: data/demo
+  output_dir: output/demo/resize
+  pkl_dir: pickles/demo/resize
+desired_size: 224
+output:
+  format: png
+toRGB: true
