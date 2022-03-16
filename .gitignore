@@ -19,6 +19,10 @@ lib64/
 parts/
 sdist/
 var/
+madi/
+elan/
+resize/
+dummy/
 wheels/
 pip-wheel-metadata/
 share/python-wheels/
