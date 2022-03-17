@@ -15,6 +15,7 @@ downloads/
 eggs/
 .eggs/
 elan/
+madi/
 lib/
 lib64/
 parts/
