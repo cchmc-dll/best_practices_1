@@ -1,0 +1,17 @@
+name: Github Actions Demo
+on:
+  issues:
+    types: [opened, edited, deleted] 
+jobs:
+  Job1:
+    runs-on: ubuntu-latest     
+    steps:
+      - name: "This is Step 1 with bash command."
+        run: echo "hello World"
+        shell: bash
+      - name: "This is step 2 using marketplace action."
+        uses: actions/checkout@v3
+  Job2:
+    .....
+  Job3:
+    .....
