@@ -1,17 +1,16 @@
-name: Github Actions Demo
+
+name: Dump event payload
+
 on:
   issues:
-    types: [opened, edited, deleted] 
+    types: [opened, edited, deleted]
+
 jobs:
-  Job1:
-    runs-on: ubuntu-latest     
+  Comment:
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      - name: "This is Step 1 with bash command."
-        run: echo "hello World"
+      - name: "Step 1 - Dumping Github Event Payload"
+        run: echo '${{ toJSON(github.event) }}' | jq
         shell: bash
-      - name: "This is step 2 using marketplace action."
-        uses: actions/checkout@v3
-  Job2:
-    .....
-  Job3:
-    .....
