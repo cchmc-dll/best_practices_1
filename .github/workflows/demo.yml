@@ -1,0 +1,29 @@
+name: Dump event payload
+
+on:
+  issues:
+    types: [opened, edited, deleted]
+
+jobs:
+  Comment:
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      - name: "Step 1 - Dumping Github Event Payload"
+        run: echo '${{ toJSON(github.event) }}' | jq
+        shell: bash
+      - name: "Step 2 - Print type of event - open vs edit"
+        run: echo $(expr ${{ github.event.action }} = 'edited')
+        shell: bash
+      - name: "Create a comment on newly opened Issue"
+        if: ${{ github.event.action == 'opened' }}
+        uses: peter-evans/create-or-update-comment@v2
+        with:
+          issue-number: ${{ github.event.issue.number }}
+          body: |
+            Thanks **@${{ github.event.issue.user.login }}** for opening this issue. We will take a look into it ASAP.
+            - Please make sure enough details are provided. :sparkles:
+            - Credits: Created by [create-or-update-comment][1]
+            [1]: https://github.com/peter-evans/create-or-update-comment
+          reactions: '+1'
